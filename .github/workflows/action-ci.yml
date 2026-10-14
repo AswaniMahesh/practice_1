@@ -74,7 +74,7 @@ jobs:
     - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
     - uses: microsoft/setup-msbuild@30375c66a4eea26614e0d39710365f22f8b0af57 # v3.0.0
       name: Setup msbuild
-    - uses: nuget/setup-nuget@b26b823c478ee115be5c9403e62c90b0bf943843 # v3.1.0
+    - uses: nuget/setup-nuget@fd55a6f3b34392fa83fde1454582407d8c714123 # v4.0
       name: Use nuget 6.x
       with:
         nuget-version: '6.x'
@@ -99,12 +99,12 @@ jobs:
           -p:PublishDir=${{ github.workspace }}\output\publish\
       shell: pwsh
       name: Build calculator.slnx
-    - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+    - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
       name: Upload build outputs
       with:
         name: Build-${{ matrix.platform }}
         path: ${{ github.workspace }}/output
-    - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+    - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
       with:
         name: Tools-${{ matrix.platform }}
         path: ${{ github.workspace }}/build/scripts/SignTestApp.ps1
@@ -119,12 +119,12 @@ jobs:
     env:
       testDir: ${{ github.workspace }}/download/CalculatorUnitTests/AppPackages/CalculatorUnitTests_Test
     steps:
-    - uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
+    - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
       name: Download build outputs
       with:
         name: Build-${{ matrix.platform }}
         path: ${{ github.workspace }}/download
-    - uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
+    - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
       name: Download tools
       with:
         name: Tools-${{ matrix.platform }}
@@ -148,12 +148,12 @@ jobs:
     env:
       testDir: ${{ github.workspace }}/download/Calculator.Tests/AppPackages/Calculator.Tests_Test
     steps:
-    - uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
+    - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
       name: Download build outputs
       with:
         name: Build-${{ matrix.platform }}
         path: ${{ github.workspace }}/download
-    - uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
+    - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
       name: Download tools
       with:
         name: Tools-${{ matrix.platform }}
@@ -175,12 +175,12 @@ jobs:
       appDir: ${{ github.workspace }}/download/Calculator/AppPackages/Calculator*_Test
       pubDir: ${{ github.workspace }}/download/publish
     steps:
-    - uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
+    - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
       name: Download build outputs
       with:
         name: Build-x64
         path: ${{ github.workspace }}/download
-    - uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
+    - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
       name: Download tools
       with:
         name: Tools-x64
